@@ -2,9 +2,33 @@
 
 nav {
   height: 4.5rem;
-  background-color: red;
   display: flex;
+  align-items: center;
+  color: $dark-gray;
   ul {
+    margin: 0 5rem;
     display: flex;
+    align-items: center;
+    li {
+      margin: 0 0.5rem;
+      font-size: $fs-xs;
+      font-weight: 600;
+      cursor: pointer;
+      a {
+        color: $dark-gray;
+        transition: all ease-in-out 200ms;
+      }
+    }
+    :not(:first-child):hover a {
+      color: $purple;
+    }
+  }
+}
+
+#logo {
+  font-size: $fs-m;
+  padding-right: 3rem;
+  span {
+    font-weight: 400;
   }
 }
