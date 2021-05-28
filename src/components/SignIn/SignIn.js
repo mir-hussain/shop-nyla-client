@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const SignIn = () => {
   return (
     <div>
-      <h1>This is Sign in Sojib</h1>
+      <button>Login</button>
     </div>
   );
 };
