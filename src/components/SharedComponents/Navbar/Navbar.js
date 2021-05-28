@@ -1,9 +1,17 @@
 import React from "react";
+import "./Navbar.scss";
 
 const Navbar = () => {
   return (
     <div>
-      <h1>This is Navbar</h1>
+      <ul>
+        <li>Shop Nyla</li>
+        <li>Home</li>
+        <li>Shop</li>
+        <li>About</li>
+        <li>Contact Us</li>
+        <li>Sing in</li>
+      </ul>
     </div>
   );
 };
