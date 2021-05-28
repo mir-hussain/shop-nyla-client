@@ -1,21 +1,10 @@
 @import "../../../Styles/StyleData.scss";
 
-#logo {
-  color: $purple;
-}
-
-#home {
-  font-size: $fs-s;
-}
-
-#shop {
-  font-size: $fs-m;
-}
-
-#about {
-  font-size: $fs-l;
-}
-
-#contact {
-  font-size: $fs-xl;
+nav {
+  height: 4.5rem;
+  background-color: red;
+  display: flex;
+  ul {
+    display: flex;
+  }
 }
