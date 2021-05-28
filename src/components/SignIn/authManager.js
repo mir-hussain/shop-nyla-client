@@ -9,7 +9,7 @@ if (!firebase.apps.length) {
 export const auth = firebase.auth();
 
 const setUserName = name => {
-    const user = firebase.auth().currentUser;
+    const user = auth.currentUser;
 
     user.updateProfile({
     displayName: name
@@ -30,7 +30,7 @@ export const setUser = (user, name) => {
 };
 
 export const createUser = (email, password, name) => {
-    return firebase.auth().createUserWithEmailAndPassword(email, password)
+    return auth.createUserWithEmailAndPassword(email, password)
     .then(res => {
         setUserName(name);
         return setUser(res.user, name);
@@ -39,7 +39,7 @@ export const createUser = (email, password, name) => {
 };
 
 export const signingUser = (email, password) => {
-    return firebase.auth().signInWithEmailAndPassword(email, password)
+    return auth.signInWithEmailAndPassword(email, password)
     .then(res => setUser(res.user))
     .catch(err => err);
 };

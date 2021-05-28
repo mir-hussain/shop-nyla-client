@@ -1,9 +1,10 @@
-import { AUTH_USER_FAILURE, AUTH_USER_REQUEST, AUTH_USER_SUCCESS } from "../actions/userActions";
+import { AUTH_PRIVATE_LOADING, AUTH_USER_FAILURE, AUTH_USER_REQUEST, AUTH_USER_SUCCESS } from "../actions/userActions";
 
 const initialState = {
     loading: false,
     user: {},
     error: '',
+    privateLoading: true
 }
 
 export const userReducer = (state = initialState, {type, payload}) => {
@@ -26,6 +27,11 @@ export const userReducer = (state = initialState, {type, payload}) => {
                 loading: false,
                 user: {},
                 error: payload,
+            }
+        case AUTH_PRIVATE_LOADING:
+            return {
+                ...state,
+                privateLoading: false
             }
         default: return state;
     }
