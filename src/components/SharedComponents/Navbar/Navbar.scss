@@ -1,21 +1,34 @@
 @import "../../../Styles/StyleData.scss";
 
+nav {
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  color: $dark-gray;
+  ul {
+    margin: 0 5rem;
+    display: flex;
+    align-items: center;
+    li {
+      margin: 0 0.5rem;
+      font-size: $fs-xs;
+      font-weight: 600;
+      cursor: pointer;
+      a {
+        color: $dark-gray;
+        transition: all ease-in-out 200ms;
+      }
+    }
+    :not(:first-child):hover a {
+      color: $purple;
+    }
+  }
+}
+
 #logo {
-  color: $purple;
-}
-
-#home {
-  font-size: $fs-s;
-}
-
-#shop {
   font-size: $fs-m;
-}
-
-#about {
-  font-size: $fs-l;
-}
-
-#contact {
-  font-size: $fs-xl;
+  padding-right: 3rem;
+  span {
+    font-weight: 400;
+  }
 }
