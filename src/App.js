@@ -4,6 +4,7 @@ function App() {
   return (
     <div className='App'>
       <h1>Shop Nyla</h1>
+      <p>My name is mir</p>
     </div>
   );
 }
