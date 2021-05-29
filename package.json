@@ -5,7 +5,10 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
+<<<<<<< HEAD
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
+=======
+>>>>>>> 5ca72d0a138a1dbccfdbd2ef552a97aebc0d27de
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@testing-library/jest-dom": "^5.12.0",
