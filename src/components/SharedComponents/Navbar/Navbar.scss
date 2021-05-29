@@ -1,21 +1,53 @@
 @import "../../../Styles/StyleData.scss";
 
+nav {
+  height: 4.5rem;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  color: $dark-gray;
+  ul {
+    margin: 0 5rem;
+    display: flex;
+    align-items: center;
+    li {
+      margin: 0 0.5rem;
+      font-size: $fs-xs;
+      font-weight: 600;
+      cursor: pointer;
+      a {
+        color: $dark-gray;
+        transition: all ease-in-out 200ms;
+      }
+    }
+    :not(:first-child):hover a {
+      color: $purple;
+    }
+  }
+  .user-logo {
+    border-radius: 50%;
+    height: 40px;
+    margin-top: 3px;
+  }
+}
+
 #logo {
-  color: $purple;
-}
-
-#home {
-  font-size: $fs-s;
-}
-
-#shop {
   font-size: $fs-m;
+  padding-right: 3rem;
+  span {
+    font-weight: 400;
+  }
 }
 
-#about {
-  font-size: $fs-l;
+.active {
+  background-color: #fff;
+  transition: all ease-in-out 200ms;
 }
 
-#contact {
-  font-size: $fs-xl;
+.disable {
+  background-color: transparent;
+  transition: all ease-in-out 200ms;
 }

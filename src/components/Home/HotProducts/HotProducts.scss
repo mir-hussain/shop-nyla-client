@@ -1,0 +1,103 @@
+@import "../../../Styles/StyleData.scss";
+
+.hot-products-container {
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  gap: 1.8rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.hot-product-card {
+  height: 250px;
+  width: 400px;
+  border: 1px solid rgba(170, 169, 169, 0.479);
+  position: relative;
+  transition: all ease-in-out 200ms;
+  padding: 2rem;
+  img {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+  .card-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@keyframes line {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 75px;
+  }
+}
+
+.line {
+  background-color: $white;
+  height: 2px;
+  width: 78px;
+  display: none;
+}
+
+@-webkit-keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.shop-now-btn {
+  line-height: 25px;
+  color: $white;
+  display: none;
+}
+
+.hot-link {
+  color: $dark-gray;
+  transition: all ease-in-out 200ms;
+  &:hover .hot-product-card {
+    background-color: #7180e0ad;
+  }
+  &:hover {
+    color: $white;
+  }
+  &:hover .line {
+    display: block;
+    animation-name: line;
+    animation-duration: 350ms;
+  }
+  &:hover .shop-now-btn {
+    display: block;
+    -webkit-animation: slide-in-bottom 200ms ease-in-out
+      350ms both;
+    animation: slide-in-bottom 200ms ease-in-out 350ms both;
+  }
+}
