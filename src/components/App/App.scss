@@ -10,14 +10,11 @@
 body {
   font-family: "Poppins", sans-serif;
 }
-<<<<<<< HEAD
 ol,
 li {
   list-style: none;
   padding: 0;
 }
-=======
->>>>>>> b8f1321f5fbc3b0392ed360e1d41d3d9c3b20b15
 
 .btn-primary {
   color: $white;
@@ -27,5 +24,16 @@ li {
   transition: all ease-in-out 200ms;
   &:hover {
     background-color: $dark-gray;
+  }
+}
+
+.btn-secondary {
+  color: $white;
+  background-color: $light-gray;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  transition: all ease-in-out 200ms;
+  &:hover {
+    background-color: $purple;
   }
 }

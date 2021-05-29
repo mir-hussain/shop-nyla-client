@@ -1,0 +1,42 @@
+@import "../../../Styles/StyleData.scss";
+
+.footer-container {
+  height: 400px;
+  width: 100%;
+  padding: 4rem 5rem;
+  background-color: #222222;
+
+  .footer-column-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    .footer-column {
+      height: 200px;
+      width: 250px;
+
+      li {
+        margin-bottom: 0.5rem;
+        color: $light-gray;
+        cursor: pointer;
+      }
+
+      .column-header {
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        font-size: $fs-m;
+        color: $white;
+        cursor: default;
+      }
+
+      .address {
+        color: $light-gray;
+      }
+    }
+  }
+  .copyright {
+    text-align: center;
+    margin-top: 4rem;
+    color: $light-gray;
+  }
+}

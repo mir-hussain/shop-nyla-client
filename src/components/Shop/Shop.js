@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Shop.scss";
 import ProductCard from "../SharedComponents/ProducrtCard/ProductCard";
 import allProducts from "../../fakeData";
@@ -7,36 +7,77 @@ import women from "../../fakeData/adidasWomenCloth";
 import shoe from "../../fakeData/adidasShoe";
 
 const Shop = () => {
-  let data = "allProducts";
-
   const [category, setCategory] = useState("allProducts");
-  console.log(category);
 
-  if (data === "allProducts") {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  let data;
+
+  if (category === "allProducts") {
+    data = allProducts;
+  } else if (category === "women") {
+    data = women;
+  } else if (category === "men") {
+    data = men;
+  } else if (category === "shoe") {
+    data = shoe;
   }
-
   const handleCategory = (event) => {
     setCategory(event.target.name);
   };
 
   return (
     <section className='shop-section'>
-      <div>
-        <button name='allProducts' onClick={handleCategory}>
+      <div className='category'>
+        <button
+          className={
+            category === "allProducts"
+              ? "active-btn"
+              : "inactive-btn"
+          }
+          name='allProducts'
+          onClick={handleCategory}
+        >
           All products
         </button>
-        <button name='women' onClick={handleCategory}>
+        <button
+          className={
+            category === "women"
+              ? "active-btn"
+              : "inactive-btn"
+          }
+          name='women'
+          onClick={handleCategory}
+        >
           Women
         </button>
-        <button name='men' onClick={handleCategory}>
+        <button
+          className={
+            category === "men"
+              ? "active-btn"
+              : "inactive-btn"
+          }
+          name='men'
+          onClick={handleCategory}
+        >
           Men
         </button>
-        <button name='shoe' onClick={handleCategory}>
+        <button
+          className={
+            category === "shoe"
+              ? "active-btn"
+              : "inactive-btn"
+          }
+          name='shoe'
+          onClick={handleCategory}
+        >
           Shoe
         </button>
       </div>
       <div className='products-container'>
-        {allProducts.map((data) => (
+        {data.map((data) => (
           <ProductCard key={data.key} data={data} />
         ))}
       </div>

@@ -1,5 +1,7 @@
+@import "../../Styles/StyleData.scss";
+
 .shop-section {
-  margin-top: 4rem;
+  margin-top: 7rem;
 }
 
 .products-container {
@@ -7,4 +9,33 @@
   grid-template-columns: repeat(auto-fit, 300px);
   gap: 20px;
   justify-content: center;
+}
+
+.category {
+  padding: 0 80px;
+  margin: 50px 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  button {
+    margin: 0 20px;
+    border: none;
+    background-color: $white;
+    font-size: $fs-s;
+    cursor: pointer;
+    transition: all ease-in-out 300ms;
+    &:hover {
+      color: $dark-gray;
+      text-decoration: underline;
+    }
+  }
+}
+
+.active-btn {
+  color: $dark-gray;
+  text-decoration: underline;
+}
+
+.inactive-btn {
+  color: $light-gray;
 }
