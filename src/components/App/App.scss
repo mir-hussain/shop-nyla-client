@@ -10,6 +10,11 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+<<<<<<< HEAD
+ol,li {
+  list-style: none;
+  padding: 0;
+=======
 
 .btn-primary {
   color: $white;
@@ -20,4 +25,5 @@ body {
   &:hover {
     background-color: $dark-gray;
   }
+>>>>>>> 4758730c53310be83a86f59caeae1b9e97480289
 }
