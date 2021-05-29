@@ -1,8 +1,23 @@
+@import "../../Styles/StyleData.scss";
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-decoration: none;
   list-style: none;
+}
+body {
   font-family: "Poppins", sans-serif;
+}
+
+.btn-primary {
+  color: $white;
+  background-color: $purple;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  transition: all ease-in-out 200ms;
+  &:hover {
+    background-color: $dark-gray;
+  }
 }

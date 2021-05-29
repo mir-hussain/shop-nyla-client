@@ -2,7 +2,11 @@
 
 nav {
   height: 4.5rem;
+  width: 100%;
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   align-items: center;
   color: $dark-gray;
   ul {
@@ -31,4 +35,14 @@ nav {
   span {
     font-weight: 400;
   }
+}
+
+.active {
+  background-color: #fff;
+  transition: all ease-in-out 200ms;
+}
+
+.disable {
+  background-color: transparent;
+  transition: all ease-in-out 200ms;
 }

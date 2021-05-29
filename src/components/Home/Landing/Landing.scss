@@ -1,0 +1,26 @@
+@import "../../../Styles/StyleData.scss";
+
+.landing {
+  background-image: url(https://live.staticflickr.com/65535/51209410399_4007a7d846_o.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem;
+  h3 {
+    font-size: $fs-m;
+    font-weight: 400;
+    color: $dark-gray;
+    text-transform: capitalize;
+  }
+  h2 {
+    font-size: $fs-xl;
+    color: $dark-gray;
+    font-family: $s-ff;
+    text-transform: uppercase;
+    margin: 1rem 0 2rem 0;
+  }
+}
