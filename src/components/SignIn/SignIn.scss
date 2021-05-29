@@ -20,7 +20,7 @@
   .input {
     border: none;
     width: 100%;
-    padding: 13px;
+    padding: 14px;
     font-size: 1rem;
     border-radius: 10px;
   }
@@ -61,6 +61,7 @@
   .switch {
     font-size: $fs-s;
     text-align: center;
+    font-weight: 500;
   }
   @mixin btn {
     border: none;
@@ -101,5 +102,8 @@
     border: 1px solid lightgrey;
     border-radius: 10px;
     padding: 20px;
+  }
+  .input-error {
+    margin-left: 10px;
   }
 }

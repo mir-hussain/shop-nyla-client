@@ -1,0 +1,19 @@
+@import "../../../Styles/StyleData.scss";
+
+.product-overview {
+  margin-bottom: 50px;
+}
+
+.product-overview-header {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: $fs-l;
+  color: $dark-gray;
+}
+
+.view-all-btn-container {
+  margin: 50px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

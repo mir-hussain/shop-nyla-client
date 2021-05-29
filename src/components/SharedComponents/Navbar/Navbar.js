@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Navbar.scss";
 
 const Navbar = ({loggedInUser}) => {
   const [navbar, setNavbar] = useState(false);
+
+  const history = useHistory();
   
-  const {name, photo} = loggedInUser;
+  const {name, photo, email} = loggedInUser;
 
   const changeBackground = () => {
     if (window.scrollY >= 72) {
@@ -16,7 +18,10 @@ const Navbar = ({loggedInUser}) => {
     }
   };
 
-  window.addEventListener("scroll", changeBackground);
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackground);
+    return () => window.removeEventListener("scroll", changeBackground);
+  })
 
   return (
     <nav className={navbar ? "active" : "disable"}>
@@ -37,10 +42,10 @@ const Navbar = ({loggedInUser}) => {
           <Link to='/contact'>Contact Us</Link>
         </li>
         <li>
-          { name?
+          { email?
             photo?
-            <img src={photo} className='user-logo' alt="" />
-            :<h4>{name}</h4>
+            <img src={photo} onClick={() => history.push('/login')} className='user-logo' alt="" />
+            :<h4 onClick={() => history.push('/login')}>{name||email}</h4>
             :<Link to='/login'>Sign In</Link>
           }
         </li>
@@ -51,7 +56,7 @@ const Navbar = ({loggedInUser}) => {
 
 const mapStateToProps = state => {
   return {
-    loggedInUser: state.user
+    loggedInUser: state.userReducer.user
   }
 }
 

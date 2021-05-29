@@ -2,17 +2,17 @@ const hotProductData = [
   {
     category: "Women",
     date: "Spring 2021",
-    img: "https://live.staticflickr.com/65535/51208081587_f20b9397a6_o.jpg",
+    img: "https://live.staticflickr.com/65535/51211402775_3368e0638a_o.jpg",
   },
   {
     category: "Men",
     date: "Spring 2021",
-    img: "https://live.staticflickr.com/65535/51208993778_8d0b17420d_o.jpg",
+    img: "https://live.staticflickr.com/65535/51211402840_f209b79571_o.jpg",
   },
   {
-    category: "Accessories",
+    category: "Shoes",
     date: "Spring 2021",
-    img: "https://live.staticflickr.com/65535/51208993803_7f740a209a_o.jpg",
+    img: "https://live.staticflickr.com/65535/51210337006_f848767f18_o.jpg",
   },
 ];
 

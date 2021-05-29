@@ -14,15 +14,15 @@ const setUserName = name => {
     user.updateProfile({
     displayName: name
     }).then(() => {
-
+        
     })
 };
 
-export const setUser = (user, name) => {
+export const setUser = user => {
     const {email, displayName, photoURL, emailVerified} = user;
     const newUser = {
         email,
-        name: displayName || name,
+        name: displayName,
         photo: photoURL,
         emailVerified
     };
@@ -33,7 +33,7 @@ export const createUser = (email, password, name) => {
     return auth.createUserWithEmailAndPassword(email, password)
     .then(res => {
         setUserName(name);
-        return setUser(res.user, name);
+        return setUser(res.user);
     })
     .catch(err => err);
 };

@@ -1,7 +1,6 @@
 @import "../../../Styles/StyleData.scss";
 
 nav {
-  height: 4.5rem;
   width: 100%;
   display: flex;
   position: fixed;
@@ -9,7 +8,9 @@ nav {
   left: 0;
   align-items: center;
   color: $dark-gray;
+  z-index: 5;
   ul {
+    width: 100%;
     margin: 0 5rem;
     display: flex;
     align-items: center;
@@ -25,6 +26,9 @@ nav {
     }
     :not(:first-child):hover a {
       color: $purple;
+    }
+    :last-child {
+      margin-left: auto;
     }
   }
   .user-logo {
@@ -45,9 +49,11 @@ nav {
 .active {
   background-color: #fff;
   transition: all ease-in-out 200ms;
+  height: 4rem;
 }
 
 .disable {
   background-color: transparent;
   transition: all ease-in-out 200ms;
+  height: 4.5rem;
 }

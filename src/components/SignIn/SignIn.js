@@ -77,29 +77,29 @@ const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoa
           :<>
           <form onSubmit={handleSubmit(onSubmit)}>
             <h2>{newUser ? "Create an account" : 'Login'}</h2>
-            {newUser && 
+            {newUser && <>
             <div className="create-input">
               <input className='input' autoComplete="username" type='text' {...register("name", { required: true })} id="name" placeholder="Enter your Name" />
-            </div>}
-            {errors.name && <span className="error">Name is required</span>}
+            </div>
+            {errors.name && <span className="error input-error">Name is required</span>}</>}
 
             <div className="create-input">
               <input className='input' autoComplete="username" type='email' {...register("email", { required: true, pattern: /\S+@\S+\.\S+/ })} id="email" placeholder="Enter your Email" />
             </div>
-            {errors.email && <span className="error">Enter is required</span>}
+            {errors.email && <span className="error input-error">Email is required</span>}
             
             <div className="create-input">
               <input className="input password" autoComplete="current-password" type={showPassword?'text':'password'} {...register("password", { required: true, minLength: 6 })} id="password" placeholder="Enter Password" />
               <FontAwesomeIcon onClick={()=>setShowPassword(!showPassword)} className='eye' icon={showPassword?faEyeSlash:faEye} />
             </div>
-            {errors.password && <span className="error">Password required Minimum 6 Character</span>}
+            {errors.password && <span className="error input-error">Password required Minimum 6 Character</span>}
 
-            {newUser &&
+            {newUser && <>
               <div className="create-input">
                 <input className="input password" autoComplete="current-password" type={showPassword?'text':'password'} {...register("confirmPassword", { required: true })} id="ConfirmPassword" placeholder="Confirm Password" />
                 <FontAwesomeIcon onClick={()=>setShowPassword(!showPassword)} className='eye' icon={showPassword?faEyeSlash:faEye} />
-              </div>}
-            {errors.confirmPassword && <span className="error">Confirm Password is required</span>}
+              </div>
+            {errors.confirmPassword && <span className="error input-error">Confirm Password is required</span>}</>}
 
             <div className='remember-forgot'>
                 <div>
@@ -124,11 +124,12 @@ const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoa
 };
 
 const mapStateToProps = state => {
+  const {user, error, loading, privateLoading} = state.userReducer;
   return {
-      loggedInUser: state.user,
-      error: state.error,
-      loading: state.loading,
-      privateLoading: state.privateLoading
+      loggedInUser: user,
+      error,
+      loading,
+      privateLoading
   } 
 }
 
