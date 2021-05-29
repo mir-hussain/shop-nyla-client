@@ -3,7 +3,7 @@
 .login-container {
   display: flex;
   align-items: center;
-  min-height: 70vh;
+  min-height: 95vh;
   font-family: $p-ff;
   padding: 0.8rem;
 }
@@ -23,7 +23,7 @@
   .input {
     border: none;
     width: 100%;
-    padding: 10px;
+    padding: 13px;
     font-size: 1rem;
     border-radius: 10px;
   }
@@ -63,36 +63,46 @@
   }
   .switch {
     font-size: $fs-s;
+    text-align: center;
   }
-  .login-btn {
+  @mixin btn {
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
     margin: 15px 0;
-    width: 100%;
-    background-color: $purple;
-    color: white;
     font-size: $fs-s;
     cursor: pointer;
   }
-  .login-btn:focus {
-    box-shadow: 0px 5px 10px lightgrey;
+  .login-btn {
+    @include btn;
+    width: 100%;
+    background-color: $purple;
+    color: white;
+  }
+  .login-btn:focus,
+  .logout-btn:focus {
+    box-shadow: 2px 5px 20px #cccccc;
   }
   .switch-link {
     color: $purple;
     cursor: pointer;
     margin-left: 5px;
   }
-  .mb {
+  .main-error {
     margin-bottom: 0.8rem;
+    max-width: 420px;
   }
-}
-
-.login-from {
-  max-width: 650px;
-  min-width: 420px;
-  margin: 0 auto;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
-  padding: 20px;
+  .logout-btn {
+    @include btn;
+    background-color: $error;
+    color: white;
+  }
+  .login-from {
+    max-width: 650px;
+    min-width: 420px;
+    margin: 0 auto;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 20px;
+  }
 }
