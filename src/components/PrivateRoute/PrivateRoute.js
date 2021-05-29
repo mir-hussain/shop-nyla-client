@@ -27,9 +27,10 @@ const PrivateRoute = ({ children, loggedInUser, privateLoading, ...rest }) => {
 };
 
 const mapStateToProps = state => {
+    const {user, privateLoading} = state.userReducer;
     return {
-        loggedInUser: state.user,
-        privateLoading: state.privateLoading
+        loggedInUser: user,
+        privateLoading
     }
 }
 

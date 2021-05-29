@@ -6,7 +6,7 @@ import "./Navbar.scss";
 const Navbar = ({loggedInUser}) => {
   const [navbar, setNavbar] = useState(false);
   
-  const {name, photo} = loggedInUser;
+  const {name, photo, email} = loggedInUser;
 
   const changeBackground = () => {
     if (window.scrollY >= 72) {
@@ -37,10 +37,10 @@ const Navbar = ({loggedInUser}) => {
           <Link to='/contact'>Contact Us</Link>
         </li>
         <li>
-          { name?
+          { email?
             photo?
             <img src={photo} className='user-logo' alt="" />
-            :<h4>{name}</h4>
+            :<h4>{name||email}</h4>
             :<Link to='/login'>Sign In</Link>
           }
         </li>
@@ -51,7 +51,7 @@ const Navbar = ({loggedInUser}) => {
 
 const mapStateToProps = state => {
   return {
-    loggedInUser: state.user
+    loggedInUser: state.userReducer.user
   }
 }
 

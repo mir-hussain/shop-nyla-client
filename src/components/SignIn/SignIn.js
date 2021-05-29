@@ -124,11 +124,12 @@ const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoa
 };
 
 const mapStateToProps = state => {
+  const {user, error, loading, privateLoading} = state.userReducer;
   return {
-      loggedInUser: state.user,
-      error: state.error,
-      loading: state.loading,
-      privateLoading: state.privateLoading
+      loggedInUser: user,
+      error,
+      loading,
+      privateLoading
   } 
 }
 
