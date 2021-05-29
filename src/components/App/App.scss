@@ -10,30 +10,7 @@
 body {
   font-family: "Poppins", sans-serif;
 }
-ol,
-li {
+ol,li {
   list-style: none;
   padding: 0;
-}
-
-.btn-primary {
-  color: $white;
-  background-color: $purple;
-  padding: 0.5rem 2rem;
-  border-radius: 2rem;
-  transition: all ease-in-out 200ms;
-  &:hover {
-    background-color: $dark-gray;
-  }
-}
-
-.btn-secondary {
-  color: $white;
-  background-color: $light-gray;
-  padding: 0.5rem 2rem;
-  border-radius: 2rem;
-  transition: all ease-in-out 200ms;
-  &:hover {
-    background-color: $purple;
-  }
 }

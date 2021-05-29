@@ -1,7 +1,7 @@
 @import '../../Styles/StyleData';
 /* contact heading part style */
 .contact-heading{
-    background:url('../../images/contact.jpg');
+    background:url('../../images/contact1.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -19,7 +19,7 @@
     max-width: 1170px;
     margin-left: auto;
     margin-right: auto;
-     padding-top: $fs-xl;   
+    padding-top: $fs-xl;   
 }
 
 /* company information part style */
@@ -49,9 +49,11 @@
 } 
 
 /* contact part style */
+.contact-form-wrapper{
+    padding-bottom: 5rem;
+}
 .contact{
-    box-shadow: 0 0 3px rgba(72,94,116,0.7);
-   
+    box-shadow: 0 0 3px rgba(72,94,116,0.7); 
 }
 /* 1em = 25px */
 .contact> *{
