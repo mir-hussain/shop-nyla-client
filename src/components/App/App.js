@@ -14,17 +14,12 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-<<<<<<< HEAD
-import { authPrivateLoading, authUserSuccess } from "../../redux/actions/userActions";
-import About from "../About/About";
-=======
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 //authentication
 import { auth, setUser } from "../SignIn/authManager";
 
 //components
->>>>>>> 8324058b0856d9b3199c957628e880b9f272fb74
 import Contact from "../Contact/Contact";
 import Home from "../Home/Home";
 import Navbar from "../SharedComponents/Navbar/Navbar";
@@ -33,7 +28,6 @@ import About from "../About/About";
 import SignIn from "../SignIn/SignIn";
 
 function App({ setLoggedInUser, setPrivateLoading }) {
-  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -57,17 +51,10 @@ function App({ setLoggedInUser, setPrivateLoading }) {
           <Route path='/login'>
             <SignIn />
           </Route>
-<<<<<<< HEAD
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/contact'>
-=======
           <PrivateRoute path='/about'>
             <Contact />
           </PrivateRoute>
           <PrivateRoute path='/contact'>
->>>>>>> 8324058b0856d9b3199c957628e880b9f272fb74
             <Contact />
           </PrivateRoute>
           <PrivateRoute path='/shop'>
