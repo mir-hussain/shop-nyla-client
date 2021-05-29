@@ -6,10 +6,11 @@ import { useForm } from "react-hook-form";
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { authUserFailure, authUserRequest, authUserSuccess } from '../../redux/actions/userActions';
-import { createUser, fbProvider, googleProvider, signingUser, signInWithProvider } from './authManager';
+import Spinner from '../Spinner/Spinner';
+import { createUser, fbProvider, googleProvider, signingUser, signInWithProvider, userSignOut } from './authManager';
 import './SignIn.scss';
 
-const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoading}) => {
+const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoading, privateLoading}) => {
   
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -32,10 +33,16 @@ const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoa
     }
   }
 
+  const handleLogout = () => {
+    userSignOut()
+    .then(() => setLoggedInUser({}))
+  }
+
   const onSubmit = data => {
     const {email, password, name, confirmPassword} = data;
         if (newUser) {
             if (password === confirmPassword) {
+              setLoading()
               createUser(email, password, name)
               .then(res => handleUser(res));
             }
@@ -44,19 +51,31 @@ const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoa
             }
         }
         else{
+          setLoading()
           signingUser(email, password)
           .then(res => handleUser(res));
         }
   };
 
   const handleProvider = provider => {
+    setLoading()
     signInWithProvider(provider)
     .then(res => handleUser(res))
   }
 
   return (
-      <div className="login-container">
+    <>
+      {privateLoading?
+        <Spinner />:
+        <div className="login-container">
         <div className="login-from">
+          {loggedInUser.email?
+          <div className="text-center">
+            <button onClick={handleLogout} className="logout-btn">LogOut</button>
+            <p className="error main-error">Now, you loggedIn. If You want to Login another account, please logout first</p>
+
+          </div>
+          :<>
           <form onSubmit={handleSubmit(onSubmit)}>
             <h2>{newUser ? "Create an account" : 'Login'}</h2>
             {newUser && 
@@ -90,17 +109,18 @@ const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoa
                 </div>
                 { !newUser && <span className="switch-link">Forgot Password</span>}
             </div>
-            <input className='login-btn' type="submit" value={newUser ? 'Create Account' : 'Login'} />
-            <p className='text-center error mb'>{error}</p>
+            <input disabled={loading} className='login-btn' type="submit" value={newUser ? 'Create Account' : 'Login'} />
+            <p className='text-center error main-error'>{loading?'Loading, Please Wait...':error}</p>
             <h5 className='switch'>{newUser ? 'Already' :"Don't"} have an account ? <span onClick={()=> setNewUser(!newUser)} className="switch-link">{newUser ? 'Login' : 'Create an account'}</span></h5>
           </form>
           <h5 className='text-center'>Or</h5>
           <div className="text-center">
               <FontAwesomeIcon onClick={() =>handleProvider(fbProvider)} className='login-icon' icon={faFacebook} id='fb-icon' />
               <FontAwesomeIcon onClick={() =>handleProvider(googleProvider)} className='login-icon' icon={faGoogle} />
-          </div>
+          </div></>}
         </div>
-    </div>
+    </div>}
+    </>
   );
 };
 
@@ -108,7 +128,8 @@ const mapStateToProps = state => {
   return {
       loggedInUser: state.user,
       error: state.error,
-      loading: state.loading
+      loading: state.loading,
+      privateLoading: state.privateLoading
   } 
 }
 
