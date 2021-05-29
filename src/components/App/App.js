@@ -6,6 +6,7 @@ import {
   Switch
 } from "react-router-dom";
 import { authPrivateLoading, authUserSuccess } from "../../redux/actions/userActions";
+import About from "../About/About";
 import Contact from "../Contact/Contact";
 import Home from "../Home/Home";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -41,7 +42,7 @@ function App({setLoggedInUser, setPrivateLoading}) {
             <SignIn />
           </Route>
           <Route path='/about'>
-            <Contact />
+            <About />
           </Route>
           <Route path='/contact'>
             <Contact />
