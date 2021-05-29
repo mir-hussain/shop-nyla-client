@@ -3,7 +3,7 @@
 .login-container {
   display: flex;
   align-items: center;
-  min-height: 80vh;
+  min-height: 95vh;
   font-family: $p-ff;
   padding: 0.8rem;
 }
@@ -23,7 +23,7 @@
   .input {
     border: none;
     width: 100%;
-    padding: 10px;
+    padding: 13px;
     font-size: 1rem;
     border-radius: 10px;
   }
