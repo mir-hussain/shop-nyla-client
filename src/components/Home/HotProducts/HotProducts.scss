@@ -1,0 +1,36 @@
+@import "../../../Styles/StyleData.scss";
+
+.hot-products-container {
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  gap: 1.8rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.hot-product-card {
+  height: 250px;
+  width: 400px;
+  border: 1px solid rgba(170, 169, 169, 0.479);
+}
+
+.women,
+.men,
+.cap {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.women {
+  background-image: url("https://live.staticflickr.com/65535/51208081587_f20b9397a6_o.jpg");
+}
+
+.men {
+  background-image: url("https://live.staticflickr.com/65535/51208993778_8d0b17420d_o.jpg");
+}
+
+.cap {
+  background-image: url("https://live.staticflickr.com/65535/51208993803_7f740a209a_o.jpg");
+}
