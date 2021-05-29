@@ -1,7 +1,6 @@
 @import "../../../Styles/StyleData.scss";
 
 nav {
-  height: 4.5rem;
   width: 100%;
   display: flex;
   position: fixed;
@@ -50,9 +49,11 @@ nav {
 .active {
   background-color: #fff;
   transition: all ease-in-out 200ms;
+  height: 4rem;
 }
 
 .disable {
   background-color: transparent;
   transition: all ease-in-out 200ms;
+  height: 4.5rem;
 }
