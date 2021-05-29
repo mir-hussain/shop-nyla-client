@@ -1,20 +1,16 @@
 import { useEffect } from "react";
-import "./App.scss";
-
 // redux
 import { connect } from "react-redux";
-import {
-  authPrivateLoading,
-  authUserSuccess,
-} from "../../redux/actions/userActions";
-
 //react route dom
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
+  Switch
 } from "react-router-dom";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import {
+  authPrivateLoading,
+  authUserSuccess
+} from "../../redux/actions/userActions";
 
 //authentication
 import { auth, setUser } from "../SignIn/authManager";
@@ -22,10 +18,12 @@ import { auth, setUser } from "../SignIn/authManager";
 //components
 import Contact from "../Contact/Contact";
 import Home from "../Home/Home";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Navbar from "../SharedComponents/Navbar/Navbar";
 import Shop from "../Shop/Shop";
 import About from "../About/About";
 import SignIn from "../SignIn/SignIn";
+import "./App.scss";
 
 function App({ setLoggedInUser, setPrivateLoading }) {
   useEffect(() => {
@@ -50,6 +48,9 @@ function App({ setLoggedInUser, setPrivateLoading }) {
           </Route>
           <Route path='/login'>
             <SignIn />
+          </Route>
+          <Route path='/about'>
+            <About />
           </Route>
           <PrivateRoute path='/about'>
             <Contact />
