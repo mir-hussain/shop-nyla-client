@@ -1,5 +1,10 @@
 import React from "react";
 import "./Footer.scss";
+import {
+  faFacebook,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Footer = () => {
   return (
     <div className='footer-container'>
@@ -29,7 +34,16 @@ const Footer = () => {
             floor, 379 Hudson St, New York, NY 10018 or call
             us on (+1) 96 716 6879
           </p>
-          <div></div>
+          <div className='footer-socials-icon'>
+            <FontAwesomeIcon
+              className='footer-facebook-icon'
+              icon={faFacebook}
+            />
+            <FontAwesomeIcon
+              className='footer-instagram-icon'
+              icon={faInstagram}
+            />
+          </div>
         </div>
       </div>
       <div className='copyright'>
