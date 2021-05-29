@@ -7,7 +7,7 @@ const initialState = {
     privateLoading: true
 }
 
-export const userReducer = (state = initialState, {type, payload}) => {
+const userReducer = (state = initialState, {type, payload}) => {
     switch (type){
         case AUTH_USER_REQUEST:
             return {
@@ -36,3 +36,5 @@ export const userReducer = (state = initialState, {type, payload}) => {
         default: return state;
     }
 }
+
+export default userReducer;
