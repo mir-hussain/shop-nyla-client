@@ -16,6 +16,9 @@ function App() {
           <Route path='/login'>
             <SignIn />
           </Route>
+          <Route path='/about'>
+            <Contact />
+          </Route>
           <Route path='/contact'>
             <Contact />
           </Route>
