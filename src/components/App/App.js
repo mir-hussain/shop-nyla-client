@@ -28,6 +28,7 @@ import About from "../About/About";
 import SignIn from "../SignIn/SignIn";
 
 function App({ setLoggedInUser, setPrivateLoading }) {
+  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -45,21 +46,21 @@ function App({ setLoggedInUser, setPrivateLoading }) {
       <Router>
         <Navbar />
         <Switch>
-          <PrivateRoute exact path='/'>
+          <Route exact path='/'>
             <Home />
-          </PrivateRoute>
+          </Route>
           <Route path='/login'>
             <SignIn />
           </Route>
-          <Route path='/about'>
+          <PrivateRoute path='/about'>
             <Contact />
-          </Route>
-          <Route path='/contact'>
+          </PrivateRoute>
+          <PrivateRoute path='/contact'>
             <Contact />
-          </Route>
-          <Route path='/shop'>
+          </PrivateRoute>
+          <PrivateRoute path='/shop'>
             <Shop />
-          </Route>
+          </PrivateRoute>
           <Route path='/about'>
             <About />
           </Route>
