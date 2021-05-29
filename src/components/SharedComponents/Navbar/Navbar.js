@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
-const Navbar = () => {
+const Navbar = ({loggedInUser}) => {
   const [navbar, setNavbar] = useState(false);
+  
+  const {name, photo} = loggedInUser;
 
   const changeBackground = () => {
     if (window.scrollY >= 72) {
@@ -34,11 +37,22 @@ const Navbar = () => {
           <Link to='/contact'>Contact Us</Link>
         </li>
         <li>
-          <Link to='/login'>Sign In</Link>
+          { name?
+            photo?
+            <img src={photo} className='user-logo' alt="" />
+            :<h4>{name}</h4>
+            :<Link to='/login'>Sign In</Link>
+          }
         </li>
       </ul>
     </nav>
   );
 };
 
-export default Navbar;
+const mapStateToProps = state => {
+  return {
+    loggedInUser: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Navbar);
