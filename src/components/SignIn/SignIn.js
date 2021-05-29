@@ -71,9 +71,8 @@ const SignIn = ({loggedInUser, setLoggedInUser, error, setError, loading, setLoa
         <div className="login-from">
           {loggedInUser.email?
           <div className="text-center">
-            <button onClick={handleLogout} className="logout-btn">LogOut</button>
-            <p className="error main-error">Now, you loggedIn. If You want to Login another account, please logout first</p>
-
+            <button onClick={handleLogout} className="logout-btn">Logout</button>
+            <p className="error main-error">You are logged in right now. If you want to login from another account, please logout first.</p>
           </div>
           :<>
           <form onSubmit={handleSubmit(onSubmit)}>
