@@ -11,18 +11,21 @@ import {
   authPrivateLoading,
   authUserSuccess
 } from "../../redux/actions/userActions";
-import About from "../About/About";
+
+//authentication
+import { auth, setUser } from "../SignIn/authManager";
+
+//components
 import Contact from "../Contact/Contact";
 import Home from "../Home/Home";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Navbar from "../SharedComponents/Navbar/Navbar";
 import Shop from "../Shop/Shop";
-import { auth, setUser } from "../SignIn/authManager";
+import About from "../About/About";
 import SignIn from "../SignIn/SignIn";
 import "./App.scss";
 
 function App({ setLoggedInUser, setPrivateLoading }) {
-  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -49,6 +52,9 @@ function App({ setLoggedInUser, setPrivateLoading }) {
           <Route path='/about'>
             <About />
           </Route>
+          <PrivateRoute path='/about'>
+            <Contact />
+          </PrivateRoute>
           <PrivateRoute path='/contact'>
             <Contact />
           </PrivateRoute>
