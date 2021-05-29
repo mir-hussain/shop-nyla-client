@@ -10,6 +10,7 @@ nav {
   align-items: center;
   color: $dark-gray;
   ul {
+    width: 100%;
     margin: 0 5rem;
     display: flex;
     align-items: center;
@@ -25,6 +26,9 @@ nav {
     }
     :not(:first-child):hover a {
       color: $purple;
+    }
+    :last-child {
+      margin-left: auto;
     }
   }
   .user-logo {
