@@ -1,0 +1,98 @@
+@import "../../Styles/StyleData.scss";
+
+.login-container {
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+  font-family: $p-ff;
+  padding: 0.8rem;
+}
+
+.login-container {
+  h2 {
+    font-size: $fs-l;
+    margin-bottom: 2rem;
+    color: $purple;
+    font-family: $s-ff;
+  }
+  .create-input {
+    margin: 10px 0;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+  }
+  .input {
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+  .input:focus {
+    outline: none;
+  }
+  .error {
+    color: $error;
+  }
+  .password {
+    width: 90%;
+  }
+  .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  .eye {
+    font-size: 1.2rem;
+    color: $purple;
+  }
+  #remember {
+    margin-right: 0.5rem;
+  }
+  .login-icon {
+    font-size: 2.3rem;
+    color: $purple;
+    cursor: pointer;
+  }
+  #fb-icon {
+    margin-right: 1.2rem;
+  }
+  .text-center {
+    text-align: center;
+    margin-top: 0.8rem;
+    font-size: $fs-s;
+  }
+  .switch {
+    font-size: $fs-s;
+  }
+  .login-btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+    width: 100%;
+    background-color: $purple;
+    color: white;
+    font-size: $fs-s;
+    cursor: pointer;
+  }
+  .login-btn:focus {
+    box-shadow: 0px 5px 10px lightgrey;
+  }
+  .switch-link {
+    color: $purple;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  .mb {
+    margin-bottom: 0.8rem;
+  }
+}
+
+.login-from {
+  max-width: 650px;
+  min-width: 420px;
+  margin: 0 auto;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 20px;
+}
