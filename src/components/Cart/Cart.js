@@ -1,11 +1,9 @@
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { connect } from "react-redux";
-import { addCount, removeCount } from "../../redux/actions/cartActions";
 import './Cart.scss';
+import CartTableRow from "./CartTableRow/CartTableRow";
 
-const Cart = ({cart, increaseQuantity, decreaseQuantity}) => {
+const Cart = ({cart}) => {
 
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
@@ -13,7 +11,11 @@ const Cart = ({cart, increaseQuantity, decreaseQuantity}) => {
 
   return (
     <div className="cart-container">
-      <h2>Added Products {cart.length}</h2>
+      {cart.length?
+        <h2>Added Products {cart.length} </h2>:
+        <h2 id="error">No Product Added</h2>
+      }
+      {cart.length>0&&
       <div id="cart" className="cart">
         <div className="cart-detail">
           <table>
@@ -23,39 +25,25 @@ const Cart = ({cart, increaseQuantity, decreaseQuantity}) => {
                 <th>PRICE</th>
                 <th>QUANTITY</th>
                 <th>TOTAL</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-            {
-              cart.map(({key, name, price, quantity}) => (
-                <tr key={key}>
-                  <td>{name}</td>
-                  <td>{price}</td>
-                  <td id="quantity">
-                    <button onClick={() => decreaseQuantity(key)}>
-                    <FontAwesomeIcon icon={faMinus} />
-                    </button>
-                    <div>{quantity}</div>
-                    <button onClick={() => increaseQuantity(key)}>
-                      <FontAwesomeIcon icon={faPlus} />
-                    </button>
-                  </td>
-                  <td>{price * quantity}</td>
-                </tr>
-              ))
-            }
+              {
+                cart.map(item => <CartTableRow key={item.key} item={item} />)
+              }
             </tbody>
           </table>
         </div>
         <div className="cart-counter">
           <h3>CART TOTALS</h3>
-          <p>Product Total Price : $<span> {totalPrice}</span></p>
-          <p>Shipping Cost : $<span> 15</span></p>
-          <p>Tax/Vat : $<span> {tax}</span></p>
-          <h3>Total Price : $<span> {totalPrice+tax}</span></h3>
+          <p>Product Total Price: $<span>{totalPrice}</span></p>
+          <p>Shipping Cost: $<span>15</span></p>
+          <p>Tax/Vat: $<span>{tax}</span></p>
+          <h3>Total Price: $<span>{totalPrice+15+tax}</span></h3>
           <button>Checkout</button>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
@@ -66,11 +54,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    increaseQuantity: key => dispatch(addCount(key)),
-    decreaseQuantity: key => dispatch(removeCount(key))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps)(Cart);
