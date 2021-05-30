@@ -29,11 +29,11 @@ const Navbar = ({ loggedInUser }) => {
 
   return (
     <nav className={navbar ? "active" : "disable"}>
+      <div id='logo'>
+        Shop <span>Nyla</span>
+      </div>
       <div className='navbar-desktop'>
         <ul>
-          <li id='logo'>
-            Shop <span>Nyla</span>
-          </li>
           <li>
             <Link to='/'>Home</Link>
           </li>
