@@ -24,3 +24,11 @@
     margin: 1rem 0 2rem 0;
   }
 }
+
+@media only screen and (max-width: 414px) {
+  .landing {
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 2rem;
+  }
+} ;
