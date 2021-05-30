@@ -9,33 +9,40 @@ nav {
   align-items: center;
   color: $dark-gray;
   z-index: 5;
-  ul {
-    width: 100%;
-    margin: 0 5rem;
-    display: flex;
-    align-items: center;
-    li {
-      margin: 0 0.5rem;
-      font-size: $fs-xs;
-      font-weight: 600;
-      cursor: pointer;
-      a {
-        color: $dark-gray;
-        transition: all ease-in-out 200ms;
+  .navbar-desktop {
+    width: 90%;
+    ul {
+      width: 100%;
+      margin: 0 5rem;
+      display: flex;
+      align-items: center;
+      li {
+        margin: 0 0.5rem;
+        font-size: $fs-xs;
+        font-weight: 600;
+        cursor: pointer;
+        a {
+          color: $dark-gray;
+          transition: all ease-in-out 200ms;
+        }
+      }
+      :not(:first-child):hover a {
+        color: $purple;
+      }
+      :last-child {
+        margin-left: auto;
       }
     }
-    :not(:first-child):hover a {
-      color: $purple;
-    }
-    :last-child {
-      margin-left: auto;
+    .user-logo {
+      border-radius: 50%;
+      height: 40px;
+      margin-top: 3px;
     }
   }
-  .user-logo {
-    border-radius: 50%;
-    height: 40px;
-    margin-top: 3px;
-  }
+}
+
+.navbar-phone {
+  display: none;
 }
 
 #logo {
