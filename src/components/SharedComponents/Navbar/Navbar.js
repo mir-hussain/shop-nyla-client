@@ -10,6 +10,7 @@ import "./Navbar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
+  faShoppingCart,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -142,7 +143,18 @@ const Navbar = ({ loggedInUser }) => {
               Contact Us
             </NavLink>
           </li>
-          <li className='nav-item login-button'>
+          <li className='nav-item cart-button'>
+            <NavLink
+              exact
+              to='/cart'
+              activeClassName='active'
+              className='nav-links'
+              onClick={handleClick}
+            >
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </NavLink>
+          </li>
+          <li className='nav-item'>
             <NavLink
               exact
               to='/login'
@@ -155,11 +167,6 @@ const Navbar = ({ loggedInUser }) => {
           </li>
         </ul>
         <div className='nav-icon' onClick={handleClick}>
-          <i
-            className={
-              click ? "fas fa-times" : "fas fa-bars"
-            }
-          ></i>
           <FontAwesomeIcon
             icon={click ? faTimes : faBars}
           />

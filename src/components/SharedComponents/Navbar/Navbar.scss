@@ -130,8 +130,10 @@ nav {
   }
 }
 
-.login-button {
+.cart-button {
   margin-left: auto;
+  display: block;
+  margin-bottom: 3px;
 }
 
 .nav-item .active {
@@ -143,6 +145,9 @@ nav {
 }
 
 @media screen and (max-width: 960px) {
+  nav {
+    position: static;
+  }
   .nav-container {
     background-color: $white;
   }
@@ -190,7 +195,7 @@ nav {
     color: $dark-gray;
   }
 
-  .login-button {
+  .cart-button {
     margin-left: 0;
   }
 }
