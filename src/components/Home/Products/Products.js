@@ -1,11 +1,12 @@
 import React from "react";
-import "./Products.scss";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import data from "../../../fakeData";
 import ProductsCard from "../../SharedComponents/ProducrtCard/ProductCard";
-import { Link } from "react-router-dom";
+import "./Products.scss";
 
-const Products = () => {
-  console.log(data.slice(0, 8));
+const Products = ({error}) => {
+  
   return (
     <section className='product-overview'>
       <h1 className='product-overview-header'>
@@ -16,6 +17,7 @@ const Products = () => {
           <ProductsCard data={data} />
         ))}
       </div>
+      <h3 className='error'>{error}</h3>
       <div className='view-all-btn-container'>
         <Link className='btn-secondary' to='/shop'>
           View All
@@ -25,4 +27,10 @@ const Products = () => {
   );
 };
 
-export default Products;
+const mapStateToProps = state => {
+  return {
+    error: state.cartReducer.error
+  }
+}
+
+export default connect(mapStateToProps)(Products);

@@ -1,16 +1,25 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/cartActions";
+import { ADD_COUNT, ADD_TO_CART, REMOVE_COUNT, REMOVE_FROM_CART } from "../actions/cartActions";
 
 const initialState = {
-    cart: []
+    cart: [],
+    error: ''
 }
 
 const cartReducer = (state = initialState, {type, payload}) => {
     switch (type) {
         case ADD_TO_CART:{
-            const newCart = [...state.cart, payload];
+            const found = state.cart.find(item => item.key === payload.key);
+            if (found){
+                return {
+                    ...state,
+                    error: 'Already added'
+                }
+            }
+            const newCart = [...state.cart, {...payload, quantity: 1}];
             return {
                 ...state,
-                cart: newCart 
+                cart: newCart,
+                error: '' 
             } 
         }
         case REMOVE_FROM_CART:{
@@ -19,6 +28,27 @@ const cartReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 cart: newCart
             } 
+        }
+        case ADD_COUNT:{
+            const index = state.cart.findIndex(item => item.key === payload);
+            const newCart = [...state.cart];
+            newCart[index].quantity = newCart[index].quantity + 1;
+            return {
+                ...state,
+                cart: newCart
+            } 
+        }
+        case REMOVE_COUNT:{
+            const index = state.cart.findIndex(item => item.key === payload);
+            const newCart = [...state.cart];
+            if (newCart[index].quantity > 1) {
+                newCart[index].quantity = newCart[index].quantity - 1;
+                return {
+                    ...state,
+                    cart: newCart
+                }
+            }
+            return state;
         }
         default: return state;
     }
