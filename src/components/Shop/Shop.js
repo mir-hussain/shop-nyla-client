@@ -5,6 +5,7 @@ import allProducts from "../../fakeData";
 import men from "../../fakeData/adidasMenCloth";
 import women from "../../fakeData/adidasWomenCloth";
 import shoe from "../../fakeData/adidasShoe";
+import Footer from "../SharedComponents/Footer/Footer";
 
 const Shop = () => {
   const [category, setCategory] = useState("allProducts");
@@ -81,6 +82,7 @@ const Shop = () => {
           <ProductCard key={data.key} data={data} />
         ))}
       </div>
+      <Footer />
     </section>
   );
 };

@@ -1,5 +1,73 @@
 @import "../../../Styles/StyleData.scss";
 
+// nav {
+// width: 100%;
+// display: flex;
+// position: fixed;
+// top: 0;
+// left: 0;
+// align-items: center;
+// color: $dark-gray;
+// z-index: 5;
+//   ul {
+//     width: 100%;
+//     margin: 0 5rem;
+//     display: flex;
+//     align-items: center;
+//     li {
+//       margin: 0 0.5rem;
+//       font-size: $fs-xs;
+//       font-weight: 600;
+//       cursor: pointer;
+//       a {
+//         color: $dark-gray;
+//         transition: all ease-in-out 200ms;
+//       }
+//     }
+//     :not(:first-child):hover a {
+//       color: $purple;
+//     }
+//     :last-child {
+//       margin-left: auto;
+//     }
+//   }
+//   .user-logo {
+//     border-radius: 50%;
+//     height: 40px;
+//     margin-top: 3px;
+//   }
+// }
+
+// .navbar-phone {
+//   display: none;
+// }
+
+// #logo {
+//   font-size: $fs-m;
+//   padding-right: 3rem;
+//   span {
+//     font-weight: 400;
+//   }
+// }
+
+.white {
+  background-color: #fff;
+  transition: all ease-in-out 200ms;
+  height: 4rem;
+}
+
+.transparent {
+  background-color: transparent;
+  transition: all ease-in-out 200ms;
+  height: 4.5rem;
+}
+
+.user-logo {
+  border-radius: 50%;
+  height: 40px;
+  margin-top: 3px;
+}
+
 nav {
   width: 100%;
   display: flex;
@@ -9,82 +77,125 @@ nav {
   align-items: center;
   color: $dark-gray;
   z-index: 5;
-  .navbar-desktop {
-    width: 90%;
-    ul {
-      width: 100%;
-      margin: 0 5rem;
-      display: flex;
-      align-items: center;
-      li {
-        margin: 0 0.5rem;
-        font-size: $fs-xs;
-        font-weight: 600;
-        cursor: pointer;
-        a {
-          color: $dark-gray;
-          transition: all ease-in-out 200ms;
-        }
-      }
-      :not(:first-child):hover a {
-        color: $purple;
-      }
-      #shopping-count {
-        margin-left: auto;
-        position: relative;
-        width: 2rem;
-        display: flex;
-        justify-content: center;
-        margin-right: 1rem;
-        #counter {
-          position: absolute;
-          border-radius: 50%;
-          width: 1.6rem;
-          height: 1.6rem;
-          background-color: $purple;
-          bottom: 63%;
-          left: 63%;
-          font-size: 1rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: $white;
-        }
-        :hover {
-          color: $purple;
-        }
-        svg {
-          font-size: 1.5rem;
-        }
-      }
-    }
+}
+
+.nav-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  max-width: 1500px;
+  ul {
+    width: 65%;
+    margin-left: 3rem;
   }
-  .user-logo {
-    border-radius: 50%;
-    height: 40px;
+}
+
+.nav-logo {
+  color: $dark-gray;
+  margin-left: 10rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin-right: 2rem;
+}
+
+.nav-links {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-item {
+  margin: 0;
+  font-size: $fs-xs;
+  font-weight: 600;
+  cursor: pointer;
+  a {
+    color: $light-gray;
+    transition: all ease-in-out 200ms;
     margin-top: 3px;
-  }
-  .navbar-phone {
-    display: none;
-  }
-}
-
-#logo {
-  font-size: $fs-m;
-  padding-right: 3rem;
-  span {
-    font-weight: 400;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
 }
 
-.active {
-  background-color: #fff;
-  transition: all ease-in-out 200ms;
-  height: 4rem;
+.cart-button {
+  margin-left: auto;
+  display: block;
+  margin-bottom: 3px;
 }
 
-.disable {
-  background-color: transparent;
-  transition: all ease-in-out 200ms;
-  height: 4.5rem;
+.nav-item .active {
+  color: $dark-gray;
+}
+
+.nav-icon {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  nav {
+    position: static;
+  }
+  .nav-container {
+    background-color: $white;
+  }
+  .nav-logo {
+    margin-left: 1rem;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu.active {
+    background: $white;
+    width: 100%;
+    margin-left: 0;
+    left: 0px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+  .nav-item .active {
+    color: $dark-gray;
+    border: none;
+  }
+  .nav-links {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+  }
+
+  .nav-icon {
+    display: block;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: $dark-gray;
+  }
+
+  .cart-button {
+    margin-left: 0;
+  }
 }
