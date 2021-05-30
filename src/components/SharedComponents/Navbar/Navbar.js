@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import {
-  Link,
-  useHistory,
-  NavLink,
-} from "react-router-dom";
-import "./Navbar.scss";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faShoppingCart,
-  faTimes,
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import {
+  NavLink
+} from "react-router-dom";
+import "./Navbar.scss";
+
 
 const Navbar = ({ loggedInUser }) => {
   const [navbar, setNavbar] = useState(false);
 
-  const history = useHistory();
-
-  const { name, photo, email } = loggedInUser;
+  const { email } = loggedInUser;
 
   const changeBackground = () => {
     if (window.scrollY >= 72) {
