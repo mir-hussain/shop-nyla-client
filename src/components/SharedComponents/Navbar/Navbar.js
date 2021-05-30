@@ -1,11 +1,19 @@
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import {
+  Link,
+  useHistory,
+  NavLink,
+} from "react-router-dom";
 import "./Navbar.scss";
 
-const Navbar = ({loggedInUser, cart}) => {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+
+const Navbar = ({ loggedInUser }) => {
   const [navbar, setNavbar] = useState(false);
 
   const history = useHistory();
@@ -29,69 +37,142 @@ const Navbar = ({loggedInUser, cart}) => {
       );
   });
 
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
+
   return (
-    <nav className={navbar ? "active" : "disable"}>
-      <div id='logo'>
-        Shop <span>Nyla</span>
-      </div>
-      <div className='navbar-desktop'>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
+    // <nav className={navbar ? "active" : "disable"}>
+    //   <div className='navbar-desktop'>
+    //     <ul>
+    //       <li id='logo'>
+    //         Shop <span>Nyla</span>
+    //       </li>
+    //       <li>
+    //         <Link to='/'>Home</Link>
+    //       </li>
+    //       <li>
+    //         <Link to='/shop'>Shop</Link>
+    //       </li>
+    //       <li>
+    //         <Link to='/about'>About</Link>
+    //       </li>
+    //       <li>
+    //         <Link to='/contact'>Contact Us</Link>
+    //       </li>
+    //       <li>
+    //         {email ? (
+    //           photo ? (
+    //             <img
+    //               src={photo}
+    //               onClick={() => history.push("/login")}
+    //               className='user-logo'
+    //               alt=''
+    //             />
+    //           ) : (
+    //             <h4 onClick={() => history.push("/login")}>
+    //               {name || email}
+    //             </h4>
+    //           )
+    //         ) : (
+    //           <Link to='/login'>Sign In</Link>
+    //         )}
+    //       </li>
+    //     </ul>
+    //   </div>
+    //   <div className='navbar-phone'>
+    //     <ul>
+    //       <li id='logo'>
+    //         Shop <span>Nyla</span>
+    //       </li>
+    //       <li> Button</li>
+    //     </ul>
+    //   </div>
+    // </nav>
+    <nav className={navbar ? "white" : "transparent"}>
+      <div className='nav-container'>
+        <NavLink exact to='/' className='nav-logo'>
+          Shop Nyla
+        </NavLink>
+
+        <ul
+          className={click ? "nav-menu active" : "nav-menu"}
+        >
+          <li className='nav-item'>
+            <NavLink
+              exact
+              to='/'
+              activeClassName='active'
+              className='nav-links'
+              onClick={handleClick}
+            >
+              Home
+            </NavLink>
           </li>
-          <li>
-            <Link to='/shop'>Shop</Link>
+          <li className='nav-item'>
+            <NavLink
+              exact
+              to='/shop'
+              activeClassName='active'
+              className='nav-links'
+              onClick={handleClick}
+            >
+              Shop
+            </NavLink>
           </li>
-          <li>
-            <Link to='/about'>About</Link>
+          <li className='nav-item'>
+            <NavLink
+              exact
+              to='/about'
+              activeClassName='active'
+              className='nav-links'
+              onClick={handleClick}
+            >
+              About
+            </NavLink>
           </li>
-          <li>
-            <Link to='/contact'>Contact Us</Link>
+          <li className='nav-item'>
+            <NavLink
+              exact
+              to='/contact'
+              activeClassName='active'
+              className='nav-links'
+              onClick={handleClick}
+            >
+              Contact Us
+            </NavLink>
           </li>
-          <li id="shopping-count">
-            <Link to='/cart'>
-              <FontAwesomeIcon icon={faShoppingCart} />
-              <span id="counter">{cart.length}</span>
-            </Link>
-          </li>
-          <li>
-            {email ? (
-              photo ? (
-                <img
-                  src={photo}
-                  onClick={() => history.push("/login")}
-                  className='user-logo'
-                  alt=''
-                />
-              ) : (
-                <h4 onClick={() => history.push("/login")}>
-                  {name || email}
-                </h4>
-              )
-            ) : (
-              <Link to='/login'>Sign In</Link>
-            )}
+          <li className='nav-item login-button'>
+            <NavLink
+              exact
+              to='/login'
+              activeClassName='active'
+              className='nav-links'
+              onClick={handleClick}
+            >
+              {email ? "log out" : "Log in"}
+            </NavLink>
           </li>
         </ul>
-      </div>
-      <div className='navbar-phone'>
-        <ul>
-          <li id='logo'>
-            Shop <span>Nyla</span>
-          </li>
-          <li> Button</li>
-        </ul>
+        <div className='nav-icon' onClick={handleClick}>
+          <i
+            className={
+              click ? "fas fa-times" : "fas fa-bars"
+            }
+          ></i>
+          <FontAwesomeIcon
+            icon={click ? faTimes : faBars}
+          />
+        </div>
       </div>
     </nav>
   );
 };
 
-const mapStateToProps = state => {
-  const {userReducer, cartReducer} = state;
+const mapStateToProps = (state) => {
   return {
-    loggedInUser: userReducer.user,
-    cart: cartReducer.cart
-  }
-}
+    loggedInUser: state.userReducer.user,
+  };
+};
 
 export default connect(mapStateToProps)(Navbar);
