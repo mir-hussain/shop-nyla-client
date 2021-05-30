@@ -1,9 +1,11 @@
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import "./Navbar.scss";
 
-const Navbar = ({ loggedInUser }) => {
+const Navbar = ({loggedInUser, cart}) => {
   const [navbar, setNavbar] = useState(false);
 
   const history = useHistory();
@@ -46,7 +48,21 @@ const Navbar = ({ loggedInUser }) => {
           <li>
             <Link to='/contact'>Contact Us</Link>
           </li>
-          <li>
+          <li id="shopping-count">
+            <Link to='/cart'>
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span id="counter">{cart.length}</span>
+            </Link>
+          </li>
+        <li>
+          { email?
+            photo?
+            <img src={photo} onClick={() => history.push('/login')} className='user-logo' alt="" />
+            :<h4 onClick={() => history.push('/login')}>{name||email}</h4>
+            :<Link to='/login'>Sign In</Link>
+          }
+        </li>
+        <li>
             {email ? (
               photo ? (
                 <img
@@ -78,10 +94,12 @@ const Navbar = ({ loggedInUser }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
+  const {userReducer, cartReducer} = state;
   return {
-    loggedInUser: state.userReducer.user,
-  };
-};
+    loggedInUser: userReducer.user,
+    cart: cartReducer.cart
+  }
+}
 
 export default connect(mapStateToProps)(Navbar);
