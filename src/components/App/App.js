@@ -5,15 +5,15 @@ import { connect } from "react-redux";
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
 } from "react-router-dom";
-import {
-  authPrivateLoading,
-  authUserSuccess
-} from "../../redux/actions/userActions";
 
 //authentication
 import { auth, setUser } from "../SignIn/authManager";
+import {
+  authPrivateLoading,
+  authUserSuccess,
+} from "../../redux/actions/userActions";
 
 //components
 import Contact from "../Contact/Contact";
