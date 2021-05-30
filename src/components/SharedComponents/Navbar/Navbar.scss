@@ -29,20 +29,44 @@ nav {
       :not(:first-child):hover a {
         color: $purple;
       }
-      :last-child {
+      #shopping-count {
         margin-left: auto;
+        position: relative;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        margin-right: 1rem;
+        #counter {
+          position: absolute;
+          border-radius: 50%;
+          width: 1.6rem;
+          height: 1.6rem;
+          background-color: $purple;
+          bottom: 63%;
+          left: 63%;
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $white;
+        }
+        :hover {
+          color: $purple;
+        }
+        svg {
+          font-size: 1.5rem;
+        }
       }
     }
-    .user-logo {
-      border-radius: 50%;
-      height: 40px;
-      margin-top: 3px;
-    }
   }
-}
-
-.navbar-phone {
-  display: none;
+  .user-logo {
+    border-radius: 50%;
+    height: 40px;
+    margin-top: 3px;
+  }
+  .navbar-phone {
+    display: none;
+  }
 }
 
 #logo {
