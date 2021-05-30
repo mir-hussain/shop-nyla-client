@@ -31,28 +31,29 @@ const Navbar = ({loggedInUser, cart}) => {
 
   return (
     <nav className={navbar ? "active" : "disable"}>
-      <ul>
-        <li id='logo'>
-          Shop <span>Nyla</span>
-        </li>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/shop'>Shop</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
-        <li>
-          <Link to='/contact'>Contact Us</Link>
-        </li>
-        <li id="shopping-count">
-          <Link to='/cart'>
-            <FontAwesomeIcon icon={faShoppingCart} />
-            <span id="counter">{cart.length}</span>
-          </Link>
-        </li>
+      <div className='navbar-desktop'>
+        <ul>
+          <li id='logo'>
+            Shop <span>Nyla</span>
+          </li>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/shop'>Shop</Link>
+          </li>
+          <li>
+            <Link to='/about'>About</Link>
+          </li>
+          <li>
+            <Link to='/contact'>Contact Us</Link>
+          </li>
+          <li id="shopping-count">
+            <Link to='/cart'>
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span id="counter">{cart.length}</span>
+            </Link>
+          </li>
         <li>
           { email?
             photo?
@@ -61,7 +62,34 @@ const Navbar = ({loggedInUser, cart}) => {
             :<Link to='/login'>Sign In</Link>
           }
         </li>
-      </ul>
+        <li>
+            {email ? (
+              photo ? (
+                <img
+                  src={photo}
+                  onClick={() => history.push("/login")}
+                  className='user-logo'
+                  alt=''
+                />
+              ) : (
+                <h4 onClick={() => history.push("/login")}>
+                  {name || email}
+                </h4>
+              )
+            ) : (
+              <Link to='/login'>Sign In</Link>
+            )}
+          </li>
+        </ul>
+      </div>
+      <div className='navbar-phone'>
+        <ul>
+          <li id='logo'>
+            Shop <span>Nyla</span>
+          </li>
+          <li> Button</li>
+        </ul>
+      </div>
     </nav>
   );
 };
