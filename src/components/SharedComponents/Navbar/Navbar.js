@@ -9,8 +9,8 @@ const Navbar = ({loggedInUser, cart}) => {
   const [navbar, setNavbar] = useState(false);
 
   const history = useHistory();
-  
-  const {name, photo, email} = loggedInUser;
+
+  const { name, photo, email } = loggedInUser;
 
   const changeBackground = () => {
     if (window.scrollY >= 72) {
@@ -22,8 +22,12 @@ const Navbar = ({loggedInUser, cart}) => {
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
-    return () => window.removeEventListener("scroll", changeBackground);
-  })
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        changeBackground
+      );
+  });
 
   return (
     <nav className={navbar ? "active" : "disable"}>
