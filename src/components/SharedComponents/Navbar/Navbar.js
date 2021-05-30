@@ -54,15 +54,7 @@ const Navbar = ({loggedInUser, cart}) => {
               <span id="counter">{cart.length}</span>
             </Link>
           </li>
-        <li>
-          { email?
-            photo?
-            <img src={photo} onClick={() => history.push('/login')} className='user-logo' alt="" />
-            :<h4 onClick={() => history.push('/login')}>{name||email}</h4>
-            :<Link to='/login'>Sign In</Link>
-          }
-        </li>
-        <li>
+          <li>
             {email ? (
               photo ? (
                 <img
