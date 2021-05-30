@@ -1,9 +1,11 @@
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import "./Navbar.scss";
 
-const Navbar = ({loggedInUser}) => {
+const Navbar = ({loggedInUser, cart}) => {
   const [navbar, setNavbar] = useState(false);
 
   const history = useHistory();
@@ -41,6 +43,12 @@ const Navbar = ({loggedInUser}) => {
         <li>
           <Link to='/contact'>Contact Us</Link>
         </li>
+        <li id="shopping-count">
+          <Link to='/cart'>
+            <FontAwesomeIcon icon={faShoppingCart} />
+            <span id="counter">{cart.length}</span>
+          </Link>
+        </li>
         <li>
           { email?
             photo?
@@ -55,8 +63,10 @@ const Navbar = ({loggedInUser}) => {
 };
 
 const mapStateToProps = state => {
+  const {userReducer, cartReducer} = state;
   return {
-    loggedInUser: state.userReducer.user
+    loggedInUser: userReducer.user,
+    cart: cartReducer.cart
   }
 }
 
