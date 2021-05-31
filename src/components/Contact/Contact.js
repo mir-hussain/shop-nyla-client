@@ -1,13 +1,12 @@
-import React from "react";
-import "./Contact.scss";
-import emailjs from "emailjs-com";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faMapMarkerAlt,
-  faPhoneAlt,
-  faEnvelope,
+  faEnvelope, faMapMarkerAlt,
+  faPhoneAlt
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import emailjs from "emailjs-com";
+import React from "react";
 import Footer from "../SharedComponents/Footer/Footer";
+import "./Contact.scss";
 
 const Contact = () => {
   function sendEmail(e) {
@@ -130,7 +129,6 @@ const Contact = () => {
                   onClick={() => resetFunction}
                   value='Reset'
                   type='submit'
-                  value='submit'
                 >
                   Send Message
                 </button>
@@ -139,7 +137,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div classNameName='google-map'>
+      <div className='google-map'>
         <iframe
           title='google map'
           src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.1435090089553!2d90.42196781429821!3d23.813495392281492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c62fb95f16c1%3A0xb333248370356dee!2sJamuna%20Future%20Park!5e0!3m2!1sen!2sbd!4v1622272644774!5m2!1sen!2sbd'

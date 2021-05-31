@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
-import "./Shop.scss";
-import ProductCard from "../SharedComponents/ProducrtCard/ProductCard";
+import React, { useState } from "react";
 import allProducts from "../../fakeData";
 import men from "../../fakeData/adidasMenCloth";
-import women from "../../fakeData/adidasWomenCloth";
 import shoe from "../../fakeData/adidasShoe";
+import women from "../../fakeData/adidasWomenCloth";
 import Footer from "../SharedComponents/Footer/Footer";
+import ProductCard from "../SharedComponents/ProducrtCard/ProductCard";
+import "./Shop.scss";
 
 const Shop = () => {
   const [category, setCategory] = useState("allProducts");
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   let data;
 

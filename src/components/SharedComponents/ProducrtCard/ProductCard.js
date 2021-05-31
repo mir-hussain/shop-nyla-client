@@ -1,11 +1,14 @@
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../../../redux/actions/cartActions";
 import "./ProductCard.scss";
 
-const ProductCard = ({ data, setCart }) => {
+const ProductCard = ({ data, setCart, cart }) => {
+
+  const found = cart.find(item => item.key === data.key);
+
   const { name, price, img } = data;
   return (
     <div className='product-card'>
@@ -20,7 +23,8 @@ const ProductCard = ({ data, setCart }) => {
         <button onClick={() => setCart(data)} className='add-to-cart-btn'>
           <FontAwesomeIcon
             className='add-icon'
-            icon={faCartPlus}
+            id={found?'checked':''}
+            icon={found?faCheck:faCartPlus}
           />
         </button>
       </div>
@@ -28,10 +32,16 @@ const ProductCard = ({ data, setCart }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    cart: state.cartReducer.cart
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     setCart: product => dispatch(addToCart(product))
   }
 }
 
-export default connect(null, mapDispatchToProps)(ProductCard);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);
