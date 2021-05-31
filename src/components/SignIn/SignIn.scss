@@ -1,5 +1,7 @@
 @import "../../Styles/StyleData.scss";
 
+$login-weight: 450px;
+
 .login-container {
   display: flex;
   align-items: center;
@@ -97,7 +99,7 @@
   }
   .login-from {
     max-width: 650px;
-    min-width: 420px;
+    min-width: $login-weight;
     margin: 0 auto;
     border: 1px solid lightgrey;
     border-radius: 10px;
@@ -105,5 +107,22 @@
   }
   .input-error {
     margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .login-container {
+    min-height: 85vh;
+    .login-from {
+      min-width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .login-container {
+    .password {
+      width: 87%;
+    }
   }
 }

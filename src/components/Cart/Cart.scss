@@ -1,6 +1,7 @@
 @import "../../Styles/StyleData.scss";
 
 .cart-container {
+  min-height: 45vh;
   h2 {
     text-align: center;
     color: $purple;
@@ -29,6 +30,7 @@
             background-color: $white;
             border: 1px solid lightgrey;
             color: $purple;
+            transition: all ease-in-out 300ms;
           }
           button:hover {
             background-color: $purple;
@@ -79,6 +81,7 @@
         border: 1px solid lightgrey;
         color: $purple;
         border-radius: 10px;
+        transition: all ease-in-out 100ms;
       }
       button:hover {
         background-color: $purple;
@@ -95,6 +98,9 @@
 }
 
 @media only screen and (max-width: 900px) {
+  .cart-container {
+    margin: 50px auto 15px auto;
+  }
   #cart {
     flex-direction: column-reverse;
     .cart-detail {

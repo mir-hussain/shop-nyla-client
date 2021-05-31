@@ -17,6 +17,7 @@ import Cart from "../Cart/Cart";
 import Contact from "../Contact/Contact";
 import Home from "../Home/Home";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import Navbar from "../SharedComponents/Navbar/Navbar";
 import Shop from "../Shop/Shop";
 //authentication
@@ -24,9 +25,8 @@ import { auth, setUser } from "../SignIn/authManager";
 import SignIn from "../SignIn/SignIn";
 import "./App.scss";
 
-
-
 function App({ setLoggedInUser, setPrivateLoading }) {
+  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -42,6 +42,7 @@ function App({ setLoggedInUser, setPrivateLoading }) {
   return (
     <div className='App'>
       <Router>
+        <ScrollToTop />
         <Navbar />
         <Switch>
           <Route exact path='/'>

@@ -14,7 +14,7 @@ const Products = ({error}) => {
       </h1>
       <div className='products-container'>
         {data.slice(0, 8).map((data) => (
-          <ProductsCard data={data} />
+          <ProductsCard data={data} key={data.key} />
         ))}
       </div>
       <h3 className='error'>{error}</h3>
