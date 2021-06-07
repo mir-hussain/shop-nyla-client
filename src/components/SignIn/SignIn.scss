@@ -16,8 +16,8 @@ $login-weight: 450px;
   }
   .create-input {
     margin: 10px 0;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
+    border-bottom: 1px solid lightgrey;
+    border-radius: 5px;
   }
   .input {
     border: none;
@@ -28,6 +28,11 @@ $login-weight: 450px;
   }
   .input:focus {
     outline: none;
+  }
+  .create-input:focus-within {
+    box-shadow: 0 0 2px $purple;
+    border-radius: 10px;
+    border-bottom: 1px solid transparent;
   }
   .error {
     color: $error;
