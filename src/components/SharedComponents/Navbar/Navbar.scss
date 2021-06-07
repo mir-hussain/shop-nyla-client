@@ -1,55 +1,5 @@
 @import "../../../Styles/StyleData.scss";
 
-// nav {
-// width: 100%;
-// display: flex;
-// position: fixed;
-// top: 0;
-// left: 0;
-// align-items: center;
-// color: $dark-gray;
-// z-index: 5;
-//   ul {
-//     width: 100%;
-//     margin: 0 5rem;
-//     display: flex;
-//     align-items: center;
-//     li {
-//       margin: 0 0.5rem;
-//       font-size: $fs-xs;
-//       font-weight: 600;
-//       cursor: pointer;
-//       a {
-//         color: $dark-gray;
-//         transition: all ease-in-out 200ms;
-//       }
-//     }
-//     :not(:first-child):hover a {
-//       color: $purple;
-//     }
-//     :last-child {
-//       margin-left: auto;
-//     }
-//   }
-//   .user-logo {
-//     border-radius: 50%;
-//     height: 40px;
-//     margin-top: 3px;
-//   }
-// }
-
-// .navbar-phone {
-//   display: none;
-// }
-
-// #logo {
-//   font-size: $fs-m;
-//   padding-right: 3rem;
-//   span {
-//     font-weight: 400;
-//   }
-// }
-
 .white {
   background-color: #fff;
   transition: all ease-in-out 200ms;
@@ -62,10 +12,16 @@
   height: 4.5rem;
 }
 
+.user-name {
+  color: rgb(41, 41, 41) !important;
+  font-size: 0.9rem;
+}
+
 .user-logo {
   border-radius: 50%;
   height: 40px;
-  margin-top: 3px;
+  margin-left: 15px;
+  margin-top: 2px;
 }
 
 nav {
@@ -219,18 +175,11 @@ nav {
       width: 50px;
       margin: 0 auto;
       span {
-        position: absolute;
         top: 8px;
-        right: 0;
-        background-color: rgb(65, 169, 255);
-        border-radius: 50%;
-        height: 1.3rem;
-        width: 1.3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
       }
     }
+  }
+  .user-logo {
+    margin-bottom: 10px;
   }
 }
