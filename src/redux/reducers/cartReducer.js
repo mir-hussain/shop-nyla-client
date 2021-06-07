@@ -2,25 +2,20 @@ import { ADD_COUNT, ADD_TO_CART, REMOVE_COUNT, REMOVE_FROM_CART } from "../actio
 
 const initialState = {
     cart: [],
-    error: ''
 }
 
 const cartReducer = (state = initialState, {type, payload}) => {
     switch (type) {
         case ADD_TO_CART:{
             const found = state.cart.find(item => item.key === payload.key);
-            if (found){
+            if (!found){
+                const newCart = [...state.cart, {...payload, quantity: 1}];
                 return {
                     ...state,
-                    error: 'Already added'
+                    cart: newCart 
                 }
             }
-            const newCart = [...state.cart, {...payload, quantity: 1}];
-            return {
-                ...state,
-                cart: newCart,
-                error: '' 
-            } 
+            return state;
         }
         case REMOVE_FROM_CART:{
             const newCart = state.cart.filter(item => item.key !== payload);

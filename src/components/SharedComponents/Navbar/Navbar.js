@@ -12,7 +12,7 @@ import {
 import "./Navbar.scss";
 
 
-const Navbar = ({ loggedInUser }) => {
+const Navbar = ({ loggedInUser, cart }) => {
   const [navbar, setNavbar] = useState(false);
 
   const { email } = loggedInUser;
@@ -148,6 +148,7 @@ const Navbar = ({ loggedInUser }) => {
               onClick={handleClick}
             >
               <FontAwesomeIcon icon={faShoppingCart} />
+              <span>{cart.length}</span>
             </NavLink>
           </li>
           <li className='nav-item'>
@@ -175,6 +176,7 @@ const Navbar = ({ loggedInUser }) => {
 const mapStateToProps = (state) => {
   return {
     loggedInUser: state.userReducer.user,
+    cart: state.cartReducer.cart
   };
 };
 
