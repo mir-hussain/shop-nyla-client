@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
+  Link,
   NavLink
 } from "react-router-dom";
 import "./Navbar.scss";
@@ -15,7 +16,7 @@ import "./Navbar.scss";
 const Navbar = ({ loggedInUser, cart }) => {
   const [navbar, setNavbar] = useState(false);
 
-  const { email } = loggedInUser;
+  const { name, photo } = loggedInUser;
 
   const changeBackground = () => {
     if (window.scrollY >= 72) {
@@ -39,53 +40,6 @@ const Navbar = ({ loggedInUser, cart }) => {
   const handleClick = () => setClick(!click);
 
   return (
-    // <nav className={navbar ? "active" : "disable"}>
-    //   <div className='navbar-desktop'>
-    //     <ul>
-    //       <li id='logo'>
-    //         Shop <span>Nyla</span>
-    //       </li>
-    //       <li>
-    //         <Link to='/'>Home</Link>
-    //       </li>
-    //       <li>
-    //         <Link to='/shop'>Shop</Link>
-    //       </li>
-    //       <li>
-    //         <Link to='/about'>About</Link>
-    //       </li>
-    //       <li>
-    //         <Link to='/contact'>Contact Us</Link>
-    //       </li>
-    //       <li>
-    //         {email ? (
-    //           photo ? (
-    //             <img
-    //               src={photo}
-    //               onClick={() => history.push("/login")}
-    //               className='user-logo'
-    //               alt=''
-    //             />
-    //           ) : (
-    //             <h4 onClick={() => history.push("/login")}>
-    //               {name || email}
-    //             </h4>
-    //           )
-    //         ) : (
-    //           <Link to='/login'>Sign In</Link>
-    //         )}
-    //       </li>
-    //     </ul>
-    //   </div>
-    //   <div className='navbar-phone'>
-    //     <ul>
-    //       <li id='logo'>
-    //         Shop <span>Nyla</span>
-    //       </li>
-    //       <li> Button</li>
-    //     </ul>
-    //   </div>
-    // </nav>
     <nav className={navbar ? "white" : "transparent"}>
       <div className='nav-container'>
         <NavLink exact to='/' className='nav-logo'>
@@ -152,15 +106,21 @@ const Navbar = ({ loggedInUser, cart }) => {
             </NavLink>
           </li>
           <li className='nav-item'>
-            <NavLink
+            {name ?
+             <Link to='/login' onClick={handleClick}>
+              {photo?
+              <img className='user-logo' src={photo} alt="user-logo" />
+              : <h5 className='nav-links user-name'>{name}</h5>}
+             </Link>
+            :<NavLink
               exact
               to='/login'
               activeClassName='active'
               className='nav-links'
               onClick={handleClick}
             >
-              {email ? "log out" : "Log in"}
-            </NavLink>
+              Log in
+            </NavLink>}
           </li>
         </ul>
         <div className='nav-icon' onClick={handleClick}>

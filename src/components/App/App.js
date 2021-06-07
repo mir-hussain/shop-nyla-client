@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // redux
 import { connect } from "react-redux";
 //react route dom
@@ -26,18 +26,24 @@ import SignIn from "../SignIn/SignIn";
 import "./App.scss";
 
 function App({ setLoggedInUser, setPrivateLoading }) {
+
+  const [isCalled, setIsCalled] = useState(false);
   
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setLoggedInUser(setUser(user));
-        setPrivateLoading();
-      } else {
-        setPrivateLoading();
-      }
-    });
-    return unsubscribe;
-  }, [setLoggedInUser, setPrivateLoading]);
+    if (!isCalled) {
+      const unsubscribe = auth.onAuthStateChanged(user => {
+        if (user) {
+          setLoggedInUser(setUser(user));
+          setPrivateLoading();
+          setIsCalled(true);
+        } else {
+          setPrivateLoading();
+          setIsCalled(true);
+        }
+      });
+      return unsubscribe;
+    }
+  }, [setLoggedInUser, setPrivateLoading, isCalled]);
 
   return (
     <div className='App'>
